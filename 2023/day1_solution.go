@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	filePath = "input.txt"
+	filePath = "day1_input.txt"
 )
 
 /*
