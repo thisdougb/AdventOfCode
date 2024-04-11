@@ -9,17 +9,16 @@ import (
 )
 
 const (
-	filePath = "day2_input.txt"
 	maxRed   = 12
 	maxGreen = 13
 	maxBlue  = 14
 )
 
-func main() {
-	log.Printf("Day 2 p1: Cube Conundrum - sum of game ids: %d", part1())
-	log.Printf("Day 2 p2: Cube Conundrum - sum of the power of sets: %d", part2())
+func day2() {
+	log.Printf("Day 2 p1: Cube Conundrum - sum of game ids: %d", day2Part1("day2_input.txt"))
+	log.Printf("Day 2 p2: Cube Conundrum - sum of the power of sets: %d", day2Part2("day2_input.txt"))
 }
-func part1() int {
+func day2Part1(filePath string) int {
 
 	readFile, _ := os.Open(filePath)
 	defer readFile.Close()
@@ -83,7 +82,7 @@ func part1() int {
 	return gameIdTotal
 }
 
-func part2() int {
+func day2Part2(filePath string) int {
 
 	readFile, _ := os.Open(filePath)
 	defer readFile.Close()

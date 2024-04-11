@@ -16,9 +16,9 @@ $ go run solution.go
 Day 1 p1: Trebuchet?! - sum of calibration values: 55172
 Day 1 p2: Trebuchet?! - sum of calibration values: 54925
 */
-func main() {
-	fmt.Printf("Day 1 p1: Trebuchet?! - sum of calibration values: %d \n", part1())
-	fmt.Printf("Day 1 p2: Trebuchet?! - sum of calibration values: %d \n", part2())
+func day1() {
+	fmt.Printf("Day 1 p1: Trebuchet?! - sum of calibration values: %d \n", day1Part1())
+	fmt.Printf("Day 1 p2: Trebuchet?! - sum of calibration values: %d \n", day1Part2())
 }
 
 /*
@@ -36,7 +36,7 @@ sum += f*10 + l
 $ go solution.go
 Day 1: Trebuchet?! - sum of calibration values: 55172
 */
-func part1() int {
+func day1Part1() int {
 
 	readFile, _ := os.Open(filePath)
 	defer readFile.Close()
@@ -80,7 +80,7 @@ digit on each line.
 
 - this suits using an array of strings, the index (int) matching the number
 */
-func part2() int {
+func day1Part2() int {
 
 	// include zero because it is keeps the indexing number-like
 	words := []string{"zero", "one", "two",
