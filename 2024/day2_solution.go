@@ -125,7 +125,7 @@ func removeIndex(s []int32, index int) []int32 {
 	return newSlice
 }
 
-// apply problem dampener
+// apply problem damper
 func reportIsSafeWithDamper(report []int32) bool {
 
 	if reportIsSafe(report) {
