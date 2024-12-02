@@ -8,17 +8,17 @@ import (
 
 func day2() {
 
-	var reports [][]int
+	var reports [][]int32
 
 	p1_input := readFileContents("day2_input.txt")
 	for i := range p1_input {
 		fields := strings.Fields(p1_input[i])
 
-		var report []int
+		var report []int32
 
 		for _, f := range fields {
 			s_to_i, _ := strconv.Atoi(f)
-			report = append(report, s_to_i)
+			report = append(report, int32(s_to_i))
 		}
 
 		reports = append(reports, report)
@@ -39,9 +39,9 @@ only counts as safe if both of the following are true:
 The levels are either all increasing or all decreasing.
 Any two adjacent levels differ by at least one and at most three.
 */
-func day2Part1(reports [][]int) int {
+func day2Part1(reports [][]int32) int32 {
 
-	count := 0
+	count := int32(0)
 	for _, report := range reports {
 		if reportIsSafe(report) {
 			count++
@@ -51,10 +51,11 @@ func day2Part1(reports [][]int) int {
 	return count
 }
 
-func reportIsSafe(report []int) bool {
+func reportIsSafe(report []int32) bool {
+
+	var trend int32
 
 	i := 0
-	trend := 0
 	for i < len(report)-1 {
 
 		change := report[i+1] - report[i]
@@ -91,9 +92,10 @@ single bad level in what would otherwise be a safe report. It's like the bad lev
 Now, the same rules apply as before, except if removing a single level from an unsafe report would
 make it safe, the report instead counts as safe.
 */
-func day2Part2(reports [][]int) int {
+func day2Part2(reports [][]int32) int32 {
 
-	count := 0
+	var count int32
+
 	for _, report := range reports {
 		if reportIsSafeWithDamper(report) {
 			count++
@@ -103,16 +105,16 @@ func day2Part2(reports [][]int) int {
 	return count
 }
 
-func diff(a, b int) int {
+func diff(a, b int32) int32 {
 	if a < b {
 		return b - a
 	}
 	return a - b
 }
 
-func removeIndex(s []int, index int) []int {
+func removeIndex(s []int32, index int) []int32 {
 
-	newSlice := []int{}
+	newSlice := []int32{}
 
 	for i, v := range s {
 		if i != index {
@@ -124,7 +126,7 @@ func removeIndex(s []int, index int) []int {
 }
 
 // apply problem dampener
-func reportIsSafeWithDamper(report []int) bool {
+func reportIsSafeWithDamper(report []int32) bool {
 
 	if reportIsSafe(report) {
 		return true
