@@ -6,7 +6,7 @@ import (
 	"math"
 )
 
-func main() {
+func day6() {
 	day6_part2()
 	// quadratic(1, t, d)
 }
@@ -24,14 +24,26 @@ func day6_part2() {
 	total := int64(1)
 	for _, pair := range input {
 		lower, upper := quadratic(1, pair[0], pair[1])
-		fmt.Printf("time %d, distance %d, lower %d, upper %d, total %d\n", pair[0], pair[1], lower, upper, upper-lower+1)
+		fmt.Printf("range 0...%d, lower bound %d, upper bound %d, total combinations %d\n", pair[0], lower, upper, upper-lower+1)
 		total *= upper - lower + 1
 	}
 	fmt.Printf("total %d\n", total)
 }
 
 /*
-x^2 -7x + 9
+The problem can be solved via the quadratic equation:
+
+	    distance = (time - charge) * charge
+		d = (t - c) * c
+		d = c(t - c)
+		d = ct - c^2
+		0 = c^2 - ct + d
+
+		or, given inputs of t = 7 and d = 9:
+
+		x^2 - 7x + 9
+
+This function returns the x-intercepts of the graph, where y=0.
 */
 func quadratic(a int64, b int64, c int64) (int64, int64) {
 
@@ -39,18 +51,16 @@ func quadratic(a int64, b int64, c int64) (int64, int64) {
 	fb := float64(b)
 	fc := float64(c + 1)
 
-	b2 := math.Pow(fb, 2)
-	n := b2 - (4 * fa * fc)
-	sqrt := math.Sqrt(float64(n))
+	sqrt := math.Sqrt(math.Pow(fb, 2) - (4 * fa * fc))
 
-	x1 := (fb - sqrt) / float64(2)
-	x2 := (fb + sqrt) / float64(2)
+	x1 := (fb - sqrt) / 2.0
+	x2 := (fb + sqrt) / 2.0
 
 	return int64(math.Ceil(x1)), int64(math.Floor(x2))
 }
 
 /*
-press is the time charing the boat
+press is the time charging the boat
 time is the total time the race lasts
 */
 func calcDistance(press int64, time int64) int64 {

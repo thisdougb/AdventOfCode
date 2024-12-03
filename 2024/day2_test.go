@@ -93,12 +93,12 @@ func TestDay2Part2WithDamper(t *testing.T) {
 func TestDay2Part2(t *testing.T) {
 
 	data := [][]int32{
-		[]int32{7, 6, 4, 2, 1},
-		[]int32{1, 2, 7, 8, 9},
-		[]int32{9, 7, 6, 2, 1},
-		[]int32{1, 3, 2, 4, 5},
-		[]int32{8, 6, 4, 4, 1},
-		[]int32{1, 3, 6, 7, 9},
+		{7, 6, 4, 2, 1},
+		{1, 2, 7, 8, 9},
+		{9, 7, 6, 2, 1},
+		{1, 3, 2, 4, 5},
+		{8, 6, 4, 4, 1},
+		{1, 3, 6, 7, 9},
 	}
 
 	result := day2Part2(data)

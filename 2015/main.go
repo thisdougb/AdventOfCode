@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	day3()
+	day1()
 }
 
 // return file contents
